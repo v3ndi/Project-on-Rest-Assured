@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<suite name="API Automation for DMONEY">
+    <test name="Admin login and create User with different ROLE">
+        <classes>
+            <class name="UserTestRunner"></class>
+        </classes>
+    </test>
+    <test name="Various Transactions">
+        <classes>
+            <class name="TransactionTestRunner"></class>
+        </classes>
+    </test>
+</suite>
