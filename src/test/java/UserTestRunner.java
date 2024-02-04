@@ -16,7 +16,7 @@ public class UserTestRunner extends Setup {
     }
     @Test(priority = 2,description = "Agent created successfully")
     public void createAgent () throws  IOException, ParseException {
-        UserController userController = new UserController(props.getProperty("baseUrl"),props.getProperty("token"));
+        UserController userController = new UserController(props.getProperty("baseUrl"),props.getProperty("token"),props.getProperty("secretKey"));
         Faker faker=new Faker();
         UserModel userModel=new UserModel();
         userModel.setName(faker.name().fullName());
@@ -45,7 +45,7 @@ public class UserTestRunner extends Setup {
     @Test(priority = 3,description = "Customer created successfully")
     public void createUser () throws  IOException, ParseException {
         for (int i = 0; i < 2; i++) {
-            UserController userController = new UserController(props.getProperty("baseUrl"), props.getProperty("token"));
+            UserController userController = new UserController(props.getProperty("baseUrl"), props.getProperty("token"),props.getProperty("secretKey"));
             Faker faker = new Faker();
             UserModel userModel = new UserModel();
             userModel.setName(faker.name().fullName());

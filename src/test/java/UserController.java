@@ -11,9 +11,16 @@ import static io.restassured.RestAssured.given;
 public class UserController {
     private String baseUrl;
     private String token;
+    private String secretKey;
     public UserController(String baseUrl,String token){
         this.baseUrl=baseUrl;
         this.token=token;
+    }
+
+    public UserController(String baseUrl,String token,String secretKey){
+        this.baseUrl=baseUrl;
+        this.token=token;
+        this.secretKey=secretKey;
     }
     public UserController(String baseUrl){
         this.baseUrl=baseUrl;
@@ -38,7 +45,7 @@ public class UserController {
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization",token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",secretKey)
                 .body(userModel)
                 .when()
                 .post("/user/create");
@@ -48,7 +55,7 @@ public class UserController {
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization",token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",secretKey)
                 .body(userModel)
                 .when()
                 .post("/transaction/deposit");
@@ -58,7 +65,7 @@ public class UserController {
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization",token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",secretKey)
                 .body(userModel)
                 .when()
                 .post("/transaction/withdraw");
@@ -68,7 +75,7 @@ public class UserController {
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization",token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",secretKey)
                 .body(userModel)
                 .when()
                 .post("/transaction/sendmoney");
@@ -78,7 +85,7 @@ public class UserController {
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization",token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",secretKey)
                 .body(userModel)
                 .when()
                 .post("/transaction/payment");
@@ -89,7 +96,7 @@ public class UserController {
         RestAssured.baseURI=baseUrl;
         Response res=given().contentType("application/json")
                 .header("Authorization",token)
-                .header("X-AUTH-SECRET-KEY","ROADTOSDET")
+                .header("X-AUTH-SECRET-KEY",secretKey)
                 .when()
                 .get("/transaction/balance/"+phone_number);
         return res;
